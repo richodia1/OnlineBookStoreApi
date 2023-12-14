@@ -1,8 +1,9 @@
 package com.book.onlinestore.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PurchaseHistoryDto {
+public class PurchaseHistoryDto implements Serializable {
 
     private BookDto book;
     private UserDto user;

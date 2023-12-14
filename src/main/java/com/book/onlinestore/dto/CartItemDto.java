@@ -1,6 +1,8 @@
 package com.book.onlinestore.dto;
 
-public class CartItemDto {
+import java.io.Serializable;
+
+public class CartItemDto implements Serializable {
     private BookDto book;
     private UserDto user;
     private int quantity;

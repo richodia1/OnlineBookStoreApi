@@ -1,5 +1,7 @@
 package com.book.onlinestore.dto;
 
+import java.io.Serializable;
+
 public class BookDto {
     private String title;
     private String genre;
