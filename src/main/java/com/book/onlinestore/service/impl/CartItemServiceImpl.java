@@ -16,7 +16,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Autowired
     UserRepository userRepository;
     @Override
-    public List<CartItem> getUserCart(Long userId) {
+    public List<CartItem> viewCart(Long userId) {
         Optional<User> user = userRepository.findById(userId);
         return cartItemRepository.findByUser(user.get());
     }

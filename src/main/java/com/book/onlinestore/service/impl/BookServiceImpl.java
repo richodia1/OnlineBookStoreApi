@@ -5,10 +5,10 @@ import com.book.onlinestore.model.Book;
 import com.book.onlinestore.repository.BookRepository;
 import com.book.onlinestore.service.BookService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BookServiceImpl implements BookService {
     @Autowired
@@ -23,5 +23,10 @@ public class BookServiceImpl implements BookService {
         ModelMapper modelMapper = new ModelMapper();
         Book bookEntity = modelMapper.map(book,Book.class);
         bookRepository.save(bookEntity);
+    }
+
+    @Override
+    public Optional<Book> getBookById(Long Id) {
+        return bookRepository.findById(Id);
     }
 }
