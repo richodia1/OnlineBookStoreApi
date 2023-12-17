@@ -3,11 +3,20 @@ package com.book.onlinestore.dto;
 import java.io.Serializable;
 
 public class BookDto {
+    private Long BookId;
     private String title;
     private String genre;
     private String isbnCode;
     private String author;
     private int yearOfPublication;
+
+    public Long getBookId() {
+        return BookId;
+    }
+
+    public void setBookId(Long bookId) {
+        BookId = bookId;
+    }
 
     public String getTitle() {
         return title;

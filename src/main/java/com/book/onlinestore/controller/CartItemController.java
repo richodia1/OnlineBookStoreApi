@@ -1,31 +1,34 @@
 package com.book.onlinestore.controller;
 
+import com.book.onlinestore.dto.ApiResponse;
 import com.book.onlinestore.dto.CartItemDto;
+import com.book.onlinestore.dto.CartItemReqDto;
 import com.book.onlinestore.dto.CheckoutDTO;
 import com.book.onlinestore.model.CartItem;
 import com.book.onlinestore.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/api/v1/cart")
 public class CartItemController {
-    @Autowired
+    @Autowired(required = false)
     private CartItemService cartService;
 
     @PostMapping("/{userId}/add")
-    public ResponseEntity<Void> addToCart(@PathVariable Long userId, @RequestBody CartItemDto cartItemDTO) {
-        cartService.addToCart(userId, cartItemDTO);
+    public ResponseEntity<Void> addToCart(@RequestBody CartItemReqDto cartItemDTO) {
+        cartService.addToCart(cartItemDTO);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<CartItem>> viewCart(@PathVariable Long userId) {
-        List<CartItem> cartItems = cartService.viewCart(userId);
-        return ResponseEntity.ok(cartItems);
+    @GetMapping("/viewCart/{userId}")
+    public ResponseEntity<ApiResponse> viewCart(@PathVariable Long userId) {
+        var result = cartService.viewCart(userId);
+        return new ResponseEntity<>(result, HttpStatusCode.valueOf(result.getStatusCode()));
     }
 
     @PostMapping("/checkout")

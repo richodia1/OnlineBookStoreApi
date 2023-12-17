@@ -1,27 +1,32 @@
 package com.book.onlinestore.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
 @Entity
+@Table(name="_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     private String username;
     private String password;
+    public User(){}
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<PurchaseHistory> purchaseHistory;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

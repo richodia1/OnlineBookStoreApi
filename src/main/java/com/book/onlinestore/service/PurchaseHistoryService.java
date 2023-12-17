@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface PurchaseHistoryService {
     // Purchase History functionality
     List<PurchaseHistoryDto> getPurchaseHistory(Long userId);

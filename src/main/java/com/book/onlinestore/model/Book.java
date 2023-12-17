@@ -4,33 +4,50 @@ package com.book.onlinestore.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+
+import java.math.BigDecimal;
 
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private long id;
 
     private String title;
     private String genre;
     private String isbnCode;
     private String author;
     private int yearOfPublication;
+    private double unitCost;
+
+
 
     // Constructors
     public Book() {
     }
 
-    public Book(String title, String genre, String isbnCode, String author, int yearOfPublication) {
+    public Book(String title, String genre, String isbnCode, String author, int yearOfPublication,double unitCost) {
         this.title = title;
         this.genre = genre;
         this.isbnCode = isbnCode;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
+        this.unitCost = unitCost;
     }
 
     // Getters and Setters
+
+
+    public double getUnitCost() {
+        return unitCost;
+    }
+
+    public void setUnitCost(double unitCost) {
+        this.unitCost = unitCost;
+    }
+
     public Long getId() {
         return id;
     }

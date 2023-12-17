@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public interface BookService {
     // Search functionality
-    List<Book> searchBooks(String title, String author, int yearOfPublication, String genre);
+    List<Book> searchBooks(String searchKey);
+
     void AddBook(BookDto book);
+
     Optional<Book> getBookById(Long Id);
+
 }

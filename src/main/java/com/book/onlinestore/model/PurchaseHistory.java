@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 public class PurchaseHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne

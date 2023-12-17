@@ -1,12 +1,13 @@
 package com.book.onlinestore.model;
 
+import com.book.onlinestore.dto.CartItemDto;
 import jakarta.persistence.*;
 
 @Entity
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -19,11 +20,11 @@ public class CartItem {
     private int quantity;
 // Getters and Setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -52,6 +53,15 @@ public class CartItem {
     }
 
     // Other methods as needed
+    public CartItemDto toDto() {
+        CartItemDto dto = new CartItemDto();
+        dto.setBookId(this.book.getId());
+
+        dto.setQuantity(this.quantity);
+        dto.setUnitCost(this.book.getUnitCost());
+        dto.setBookTitle(this.book.getTitle());
+        return dto;
+    }
 
     @Override
     public String toString() {

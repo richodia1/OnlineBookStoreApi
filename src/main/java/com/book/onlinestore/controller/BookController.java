@@ -7,25 +7,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/v1/books")
 public class BookController {
-    @Autowired
+    @Autowired(required = false)
     private BookService bookService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        Book book = bookService.getBookById(id);
-        return ResponseEntity.ok(book);
+        Optional<Book> book = bookService.getBookById(id);
+        if(book.isPresent())
+        return ResponseEntity.ok(book.get());
+        return (ResponseEntity<Book>) ResponseEntity.notFound();
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Book>> searchBooks(@RequestParam(required = false) String title,
-                                                  @RequestParam(required = false) String author,
-                                                  @RequestParam(required = false) Integer year,
-                                                  @RequestParam(required = false) String genre) {
-        List<Book> books = bookService.searchBooks(title, author, year, genre);
+    public ResponseEntity<List<Book>> searchBooks(@RequestParam(required = false) String searchKey
+                                                  ) {
+        List<Book> books = bookService.searchBooks(searchKey);
         return ResponseEntity.ok(books);
     }
 }
