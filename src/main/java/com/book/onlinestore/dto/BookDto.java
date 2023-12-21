@@ -9,6 +9,15 @@ public class BookDto {
     private String isbnCode;
     private String author;
     private int yearOfPublication;
+    private double unitCost;
+
+    public double getUnitCost() {
+        return unitCost;
+    }
+
+    public void setUnitCost(double unitCost) {
+        this.unitCost = unitCost;
+    }
 
     public Long getBookId() {
         return BookId;

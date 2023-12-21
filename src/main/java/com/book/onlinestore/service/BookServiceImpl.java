@@ -1,6 +1,7 @@
 package com.book.onlinestore.service;
 
-import com.book.onlinestore.dto.BookDto;
+import com.book.onlinestore.dto.ApiResponse;
+import com.book.onlinestore.dto.BookDtoReq;
 import com.book.onlinestore.model.Book;
 import com.book.onlinestore.repository.BookRepository;
 import org.modelmapper.ModelMapper;
@@ -23,10 +24,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void AddBook(BookDto book) {
+    public ApiResponse AddBook(BookDtoReq bookDto) {
         ModelMapper modelMapper = new ModelMapper();
-        Book bookEntity = modelMapper.map(book, Book.class);
-        bookRepository.save(bookEntity);
+        Book bookEntity = modelMapper.map(bookDto, Book.class);
+        ApiResponse api = new ApiResponse();
+        var createdBook = bookRepository.save(bookEntity);
+        api.setMessage("Success");
+        api.setStatusCode(201);
+        api.setData(createdBook);
+        return api;
+
     }
 
     @Override

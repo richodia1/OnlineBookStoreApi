@@ -18,10 +18,6 @@ public class User {
         this.username = username;
         this.password = password;
     }
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<PurchaseHistory> purchaseHistory;
-
     public long getId() {
         return id;
     }
@@ -46,12 +42,5 @@ public class User {
         this.password = password;
     }
 
-    public List<PurchaseHistory> getPurchaseHistory() {
-        return purchaseHistory;
-    }
-
-    public void setPurchaseHistory(List<PurchaseHistory> purchaseHistory) {
-        this.purchaseHistory = purchaseHistory;
-    }
 
 }

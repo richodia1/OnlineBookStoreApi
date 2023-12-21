@@ -1,13 +1,24 @@
 package com.book.onlinestore.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class PurchaseHistoryDto implements Serializable {
-
+    private String paymentReference;
+    private String PaymentStatus;
     private BookDto book;
-    private UserDto user;
-    private LocalDateTime purchaseTime;
+    private UserDtoResponse user;
+    private LocalDate purchaseTime;
+    private String paymentMethod;
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
     public BookDto getBook() {
         return book;
@@ -17,19 +28,35 @@ public class PurchaseHistoryDto implements Serializable {
         this.book = book;
     }
 
-    public UserDto getUser() {
+    public UserDtoResponse getUser() {
         return user;
     }
 
-    public void setUser(UserDto user) {
+    public void setUser(UserDtoResponse user) {
         this.user = user;
     }
 
-    public LocalDateTime getPurchaseTime() {
+    public String getPaymentReference() {
+        return paymentReference;
+    }
+
+    public void setPaymentReference(String paymentReference) {
+        this.paymentReference = paymentReference;
+    }
+
+    public String getPaymentStatus() {
+        return PaymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        PaymentStatus = paymentStatus;
+    }
+
+    public LocalDate getPurchaseTime() {
         return purchaseTime;
     }
 
-    public void setPurchaseTime(LocalDateTime purchaseTime) {
+    public void setPurchaseTime(LocalDate purchaseTime) {
         this.purchaseTime = purchaseTime;
     }
 }

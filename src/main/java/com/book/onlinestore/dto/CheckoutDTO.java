@@ -1,20 +1,14 @@
 package com.book.onlinestore.dto;
 
+import com.book.onlinestore.payment.PaymentMethodType;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 
 public class CheckoutDTO {
-
     private Long userId;
-    private String paymentMethod;
-
-    public CheckoutDTO() {
-    }
-
-    public CheckoutDTO(Long userId, String paymentMethod) {
-        this.userId = userId;
-        this.paymentMethod = paymentMethod;
-    }
-
+    private double TotalPayement;
+    private PaymentMethodType paymentMethod;
 
     public Long getUserId() {
         return userId;
@@ -24,11 +18,19 @@ public class CheckoutDTO {
         this.userId = userId;
     }
 
-    public String getPaymentMethod() {
+    public double getTotalPayement() {
+        return TotalPayement;
+    }
+
+    public void setTotalPayement(double totalPayement) {
+        TotalPayement = totalPayement;
+    }
+
+    public PaymentMethodType getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethodType paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 }

@@ -1,34 +1,14 @@
-package com.book.onlinestore.model;
+package com.book.onlinestore.dto;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.math.BigDecimal;
-
-@Entity
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private long id;
-
+public class BookDtoReq {
     private String title;
     private String genre;
     private String isbnCode;
     private String author;
     private int yearOfPublication;
     private double unitCost;
-
-
-
-    // Constructors
-    public Book() {
-    }
-
-    public Book(String title, String genre, String isbnCode, String author, int yearOfPublication,double unitCost) {
+    public BookDtoReq(){}
+    public BookDtoReq(String title, String genre, String isbnCode, String author, int yearOfPublication,double unitCost) {
         this.title = title;
         this.genre = genre;
         this.isbnCode = isbnCode;
@@ -36,18 +16,6 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
         this.unitCost = unitCost;
     }
-
-    public Book(long id,String title, String genre, String isbnCode, String author, int yearOfPublication,double unitCost){
-        this.id = id;
-        this.title = title;
-        this.genre = genre;
-        this.isbnCode = isbnCode;
-        this.author = author;
-        this.yearOfPublication = yearOfPublication;
-        this.unitCost = unitCost;
-    }
-    // Getters and Setters
-
 
     public double getUnitCost() {
         return unitCost;
@@ -55,14 +23,6 @@ public class Book {
 
     public void setUnitCost(double unitCost) {
         this.unitCost = unitCost;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {

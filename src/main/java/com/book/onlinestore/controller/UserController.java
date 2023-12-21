@@ -21,21 +21,21 @@ public class UserController {
 
 
     // Create a new user
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<UserDtoResponse> RegisterUser(@RequestBody UserDto user) {
         var createdUser = userService.addUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     // Get all users
-    @GetMapping
+    @GetMapping("/viewUsers")
     public ResponseEntity<List<UserDtoResponse>> getAllUsers() {
         var users = userService.getAllUser();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     // Get user by ID
-    @GetMapping("/{userId}")
+    @GetMapping("/getUserBy/{userId}")
     public ResponseEntity<ApiResponse> getUserById(@PathVariable Long userId) {
         var user = userService.getUser(userId);
         return new ResponseEntity<>(user, HttpStatusCode.valueOf(user.getStatusCode()));

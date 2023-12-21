@@ -51,5 +51,5 @@ This is a Java Spring Boot application for managing an online book store.
 1. Clone the repository: `git clone https://github.com/richodia1/OnlineBookStoreApi.git`
 2. Navigate to the project directory: `cd onlinestore`
 3. Build and run the application: `./mvnw spring-boot:run`
-4. Access the application at [http://localhost:8080](http://localhost:8080)
+4. Access the application at http://localhost:8080/swagger-ui/index.html#/
 
