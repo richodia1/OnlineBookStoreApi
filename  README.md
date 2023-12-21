@@ -44,6 +44,7 @@ This is a Java Spring Boot application for managing an online book store.
 - Java Spring Boot
 - Spring Data JPA
 - H2 Database (for simplicity)
+- Open Id connect
 
 
 ## Setup
@@ -52,4 +53,13 @@ This is a Java Spring Boot application for managing an online book store.
 2. Navigate to the project directory: `cd onlinestore`
 3. Build and run the application: `./mvnw spring-boot:run`
 4. Access the application at http://localhost:8080/swagger-ui/index.html#/
+
+## Note and assumption to used
+- That a User with Id 1 is seeded on the application when the application is run.
+- 10 records of book is created when the application is run. there is provision to create more Book to be used on the endpoints.
+## major action
+- Add to cart by User Id
+- view cart by User Id
+- Checkout by User Id. Payment Method is an enum which can only be TRANSFER, USSD, WEB
+- Check transaction history 
 
